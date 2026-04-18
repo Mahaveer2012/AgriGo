@@ -1,0 +1,11 @@
+# Ignore Windows junk
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.regtrans-ms
+*.blf
+
+# Ignore IDE junk
+.vscode/
+.settings/
+bin/
+target/

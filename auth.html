@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGRIGO | Login & Signup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page-wrapper">
+    <nav class="navbar" style="position: absolute; top: 0; width: 100%; box-sizing: border-box;">
+    <div class="logo-group" style="display: flex; align-items: center;">
+        <img src="logo.png" alt="AGRIGO" class="main-logo" style="height: 45px; border-radius: 50%;">
+        <span class="brand-name" style="color: white; margin-left: 10px; font-weight: bold; font-size: 1.5rem;">AGRIGO</span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <a href="post-product.html" id="sell-item-link" class="hidden" style="color: #f4a261; text-decoration: none; font-weight: 800; font-size: 0.9rem;">+ SELL PRODUCT</a>
+        
+        <a href="index.html" style="color: white; text-decoration: none; font-weight: 600;">← Back to Market</a>
+    </div>
+</nav>
+
+    <div class="auth-container"> <div class="auth-box"> <div class="auth-tabs"> 
+        <button id="login-tab" class="tab-btn active" onclick="toggleAuth('login')">Login</button>
+    <button id="signup-tab" class="tab-btn" onclick="toggleAuth('signup')">Signup</button>
+            </div>
+
+            <form id="login-form" class="auth-form"> <h2>Welcome Back</h2>
+                <p style="text-align: center; color: #666; font-size: 0.9rem;">Access your farm-to-table account</p>
+                
+                <input type="email" placeholder="Email Address" required>
+                <input type="password" placeholder="Password" required>
+                
+                <button type="submit" class="submit-btn">Login to AGRIGO</button>
+                
+                <div class="auth-footer-links">
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </form>
+
+           <form id="signup-form" class="auth-form hidden">
+    <h2>Create Account</h2>
+    <p style="text-align: center; color: #666; font-size: 0.9rem;">Start your journey with AGRIGO</p>
+    
+    <input type="text" id="signup-name" placeholder="Full Name" required>
+    <input type="email" id="signup-email" placeholder="Email Address" required>
+    <input type="password" id="signup-pass" placeholder="Password" required>
+    
+    <label for="user-role" style="font-weight: bold; color: var(--primary); margin-top: 10px;">Join as a:</label>
+    <select id="user-role" class="role-select">
+        <option value="customer">Customer (Buyer)</option>
+        <option value="farmer">Farmer (Seller)</option>
+    </select>
+
+    <button type="submit" class="submit-btn">Register Now</button>
+</form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

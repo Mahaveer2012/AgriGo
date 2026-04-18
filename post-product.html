@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGRIGO | Post Product</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page-wrapper">
+    
+    <nav class="navbar" style="position: absolute; top: 0; width: 100%; box-sizing: border-box;">
+        <div class="logo-group" style="display: flex; align-items: center;">
+            <img src="logo.png" alt="AGRIGO" class="main-logo" style="height: 45px; border-radius: 50%;">
+            <span class="brand-name" style="color: white; margin-left: 10px; font-weight: bold; font-size: 1.5rem;">AGRIGO</span>
+        </div>
+        <a href="index.html" style="color: white; text-decoration: none; font-weight: 600;">← Back to Market</a>
+    </nav>
+
+    <div class="auth-container">
+        <div class="auth-box">
+            <form id="post-product-form" class="auth-form">
+                <h2>List Your Crop</h2>
+                <p style="text-align: center; color: #666; font-size: 0.9rem;">Fill in the details to reach customers directly</p>
+                
+                <input type="text" id="prod-name" placeholder="Product Name (e.g. Fresh Tomatoes)" required>
+                <input type="number" id="prod-price" placeholder="Price (per kg)" required>
+                <input type="text" id="prod-img" placeholder="Image URL (use an Unsplash link for now)" required>
+                
+                <label for="prod-category" style="font-weight: bold; color: var(--primary);">Category:</label>
+                <select id="prod-category" class="role-select">
+                    <option value="vegetables">Vegetables</option>
+                    <option value="fruits">Fruits</option>
+                    <option value="grains">Grains</option>
+                </select>
+
+                <button type="submit" class="submit-btn">Post to Market</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

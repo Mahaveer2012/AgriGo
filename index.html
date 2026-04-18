@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGRIGO | Direct Farm Access</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+
+        
+        <div class="logo-group">
+            <img src="logo.png" alt="AGRIGO" class="main-logo">
+            <span class="brand-name">AGRIGO</span>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search for grains, fruits, vegetables..." onkeyup="searchProducts()">
+            <button><i class="fa fa-search"></i></button>
+        </div>
+
+      <div style="display: flex; align-items: center; gap: 15px;">
+    <a href="ai-doctor.html" id="ai-doctor-link" class="hidden" style="color: #52b788; text-decoration: none; font-weight: 800; border: 2px solid #52b788; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem;">✨ AI DOCTOR</a>
+    
+    <a href="post-product.html" id="sell-item-link" class="hidden" style="color: #f4a261; text-decoration: none; font-weight: 800;">+ SELL PRODUCT</a>
+    
+    <a href="auth.html" id="auth-link" style="color: white; text-decoration: none; font-weight: 600;">Login</a>
+</div>
+
+    <a href="post-product.html" id="sell-item-link" class="hidden" style="color: #f4a261; text-decoration: none; font-weight: 800;">+ SELL PRODUCT</a>
+    <a href="auth.html" id="auth-link" style="color: white; text-decoration: none; font-weight: 600;">Login</a>
+</div>
+
+        <ul class="nav-links">
+            <li><a href="post-product.html">Market</a></li>
+            <li id="farmer-actions" class="hidden"><button class="special-btn" onclick="openFarmerModal()">Post Product +</button></li>
+            <li id="cart-container" class="hidden">
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fa fa-shopping-basket"></i> (<span id="cart-count">0</span>)
+                </button>
+            </li>
+            <li><a href="auth.html" id="auth-btn" class="login-link">Login/Signup</a></li>
+            <li id="logout-item" class="hidden"><button onclick="logout()" class="logout-btn">Logout</button></li>
+        </ul>
+    </nav>
+
+    <header class="hero-commercial">
+        <div class="hero-overlay">
+            <h1>Direct Farm-to-Table Marketplace</h1>
+            <p>Empowering local farmers and delivering freshness to your doorstep.</p>
+        </div>
+    </header>
+
+    <div class="category-bar">
+        <button onclick="filterCategory('all', this)" class="cat-btn active">All Products</button>
+        <button onclick="filterCategory('vegetables', this)" class="cat-btn">Vegetables</button>
+        <button onclick="filterCategory('fruits', this)" class="cat-btn">Fruits</button>
+        <button onclick="filterCategory('grains', this)" class="cat-btn">Grains & Cereals</button>
+        <button onclick="filterCategory('dairy', this)" class="cat-btn">Dairy & Eggs</button>
+    </div>
+
+    <main class="container">
+        <div id="market-grid" class="product-grid">
+    </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo-group">
+                    <img src="logo.png" alt="AGRIGO" class="main-logo" style="height: 40px;">
+                    <h4 style="margin-left: 10px; color: var(--secondary);">AGRIGO</h4>
+                </div>
+                <p>We are dedicated to rural development by cutting out the middleman and bringing the farm directly to your doorstep. Sustainable, fresh, and fair.</p>
+                <div class="socials">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Marketplace</h4>
+                <ul>
+                    <li onclick="filterCategory('vegetables')">Vegetables</li>
+                    <li onclick="filterCategory('fruits')">Fruits</li>
+                    <li onclick="filterCategory('grains')">Grains</li>
+                    <li onclick="filterCategory('dairy')">Dairy</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Farmer FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p>Get updates on seasonal harvests.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Your Email">
+                    <button class="special-btn">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
+            <p>&copy; 2026 AGRIGO Platform. Built for Rural Development.</p>
+        </div>
+    </footer>
+
+
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+<div id="cart-modal">
+    <div class="cart-header">
+        <h3>My Basket</h3>
+        <button class="close-cart" onclick="toggleCart()">✕</button>
+    </div>
+
+    <div id="cart-items">
+        </div>
+
+    <div class="cart-footer">
+        <div class="total-row">
+            <span>Subtotal</span>
+            <span>₹<span id="cart-total">0</span></span>
+        </div>
+        <button class="checkout-btn" onclick="proceedToPayment()">Confirm Order</button>
+    </div>
+</div>
+
+
+    <div id="cart-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="toggleCart()">&times;</span>
+            <h2>Your Basket</h2>
+            <div id="cart-items"></div>
+            <div class="cart-footer">
+                <h3>Total: ₹<span id="cart-total">0</span></h3>
+                <button class="checkout-btn" onclick="proceedToPayment()">Proceed to Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="farmer-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeFarmerModal()">&times;</span>
+            <h2>List Your Produce</h2>
+            <form id="add-product-form">
+                <input type="text" id="p-name" placeholder="Product Name" required>
+                <select id="p-cat">
+                    <option value="vegetables">Vegetable</option>
+                    <option value="fruits">Fruit</option>
+                    <option value="grains">Grains</option>
+                    <option value="dairy">Dairy</option>
+                </select>
+                <input type="number" id="p-price" placeholder="Price (₹)" required>
+                <input type="text" id="p-unit" placeholder="Unit (kg/pcs)" required>
+                <button type="submit" class="submit-btn">Post Product</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
