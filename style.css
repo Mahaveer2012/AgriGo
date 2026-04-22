@@ -217,6 +217,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s ease;
+    display : none;
 }
 
 .cart-overlay.active {
@@ -227,15 +228,15 @@ body {
 #cart-modal {
     position: fixed;
     top: 0;
-    right: -420px; /* Hidden off-screen */
+    right: -420px; /* Hidden state */
     width: 400px;
     height: 100vh;
     background: #ffffff;
     box-shadow: -15px 0 35px rgba(0, 0, 0, 0.1);
     z-index: 9999;
-    display: flex;
+    display: flex; /* Always flex, just moved off-screen */
     flex-direction: column;
-    transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1); /* Ultra smooth spring curve */
+    transition: right 0.5s ease-in-out;
 }
 
 #cart-modal.active {

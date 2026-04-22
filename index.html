@@ -9,9 +9,7 @@
 </head>
 <body>
 
-    <nav class="navbar">
-
-        
+   <nav class="navbar">
         <div class="logo-group">
             <img src="logo.png" alt="AGRIGO" class="main-logo">
             <span class="brand-name">AGRIGO</span>
@@ -22,30 +20,35 @@
             <button><i class="fa fa-search"></i></button>
         </div>
 
-      <div style="display: flex; align-items: center; gap: 15px;">
-    <a href="ai-doctor.html" id="ai-doctor-link" class="hidden" style="color: #52b788; text-decoration: none; font-weight: 800; border: 2px solid #52b788; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem;">✨ AI DOCTOR</a>
-    
-    <a href="post-product.html" id="sell-item-link" class="hidden" style="color: #f4a261; text-decoration: none; font-weight: 800;">+ SELL PRODUCT</a>
-    
-    <a href="auth.html" id="auth-link" style="color: white; text-decoration: none; font-weight: 600;">Login</a>
-</div>
-
-    <a href="post-product.html" id="sell-item-link" class="hidden" style="color: #f4a261; text-decoration: none; font-weight: 800;">+ SELL PRODUCT</a>
-    <a href="auth.html" id="auth-link" style="color: white; text-decoration: none; font-weight: 600;">Login</a>
-</div>
-
-        <ul class="nav-links">
-            <li><a href="post-product.html">Market</a></li>
-            <li id="farmer-actions" class="hidden"><button class="special-btn" onclick="openFarmerModal()">Post Product +</button></li>
-            <li id="cart-container" class="hidden">
-                <button class="cart-btn" onclick="toggleCart()">
-                    <i class="fa fa-shopping-basket"></i> (<span id="cart-count">0</span>)
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <a href="ai-doctor.html" id="ai-doctor-link" class="hidden" style="color: #52b788; text-decoration: none; font-weight: 800; border: 2px solid #52b788; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem;">✨ AI DOCTOR</a>
+            <a href="post-product.html" id="sell-item-link" class="hidden" style="color: #f4a261; text-decoration: none; font-weight: 800;">+ SELL PRODUCT</a>
+            
+            <div id="cart-container" class="hidden">
+                <button class="cat-btn" onclick="toggleCart()" style="border-color: var(--primary); display: flex; align-items: center; gap: 8px;">
+                    <i class="fa fa-shopping-basket"></i> <span id="cart-count">0</span>
                 </button>
-            </li>
-            <li><a href="auth.html" id="auth-btn" class="login-link">Login/Signup</a></li>
-            <li id="logout-item" class="hidden"><button onclick="logout()" class="logout-btn">Logout</button></li>
-        </ul>
+            </div>
+
+            <a href="auth.html" id="auth-link" style="color: var(--primary); text-decoration: none; font-weight: 600; border: 1px solid var(--primary); padding: 5px 15px; border-radius: 5px;">Login</a>
+        </div>
     </nav>
+
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+    <div id="cart-modal">
+        <div class="cart-header">
+            <h3>My Basket</h3>
+            <button class="close-cart" onclick="toggleCart()">✕</button>
+        </div>
+        <div id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="total-row grand-total">
+                <span>Total</span>
+                <span>₹<span id="cart-total">0</span></span>
+            </div>
+            <button class="checkout-btn" onclick="alert('Order Placed!')">Confirm Order</button>
+        </div>
+    </div>
 
     <header class="hero-commercial">
         <div class="hero-overlay">

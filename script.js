@@ -58,30 +58,32 @@ function renderProducts(items) {
 }
 
 function checkUserSession() {
-    // 1. Get the logged-in user from storage
     const user = JSON.parse(localStorage.getItem("user"));
-    
-    // 2. Get the elements
     const sellLink = document.getElementById('sell-item-link');
     const aiDoctorLink = document.getElementById('ai-doctor-link');
     const authLink = document.getElementById('auth-link');
+    const cartCont = document.getElementById('cart-container');
 
-    // 3. Logic
     if (user) {
-        // Change Login to Logout
+        // 1. Change Login text to "Logout"
         if (authLink) {
-            authLink.innerText = "Logout";
+            authLink.innerText = `Logout (${user.name})`;
             authLink.onclick = (e) => {
                 e.preventDefault();
                 localStorage.removeItem("user");
+                localStorage.removeItem("activeCart");
                 window.location.reload();
             };
         }
 
-        // IMPORTANT: Show Farmer-only buttons
+        // 2. UI change based on Role
         if (user.role === 'farmer') {
             if (sellLink) sellLink.classList.remove('hidden');
             if (aiDoctorLink) aiDoctorLink.classList.remove('hidden');
+            if (cartCont) cartCont.classList.add('hidden'); // Farmers don't shop
+        } else if (user.role === 'customer') {
+            if (cartCont) cartCont.classList.remove('hidden'); // Show cart for buyers
+            if (sellLink) sellLink.classList.add('hidden');
         }
     }
 }
